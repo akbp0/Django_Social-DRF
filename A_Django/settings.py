@@ -188,4 +188,10 @@ REST_AUTH = {
     'OLD_PASSWORD_FIELD_ENABLED': True,
     # 'REGISTER_SERIALIZER': 'accounts.serializers.CustomRegisterSerializer',
 }
-# Following is added to enable registration with email instead of username
+# accounts:manage accounts
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_UNIQUE_EMAIL = True
+ACCOUNT_ADAPTER = 'accounts.adapter.CustomAccountAdapter'
+ACCOUNT_CONFIRM_EMAIL_ON_GET = True
