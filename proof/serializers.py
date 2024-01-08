@@ -7,7 +7,6 @@ class PosteSerializer(serializers.ModelSerializer):
     """
     Serializer for the Poste model.
     """
-
     user = serializers.SlugRelatedField(slug_field='username', read_only=True)
 
     class Meta:
@@ -19,7 +18,6 @@ class PosteCreateSerializer(serializers.ModelSerializer):
     """
     Serializer for creating a new Poste.
     """
-
     class Meta:
         model = Poste
         fields = ['title', 'body', 'image']
@@ -32,7 +30,6 @@ class UserSerializer(serializers.ModelSerializer):
     """
     Serializer for the MyUsers model.
     """
-
     class Meta:
         model = MyUsers
         fields = ('id', 'username', 'email', 'bio', 'picture')
@@ -42,7 +39,6 @@ class CommentCreateSerializer(serializers.ModelSerializer):
     """
     Serializer for creating a new Comment.
     """
-
     class Meta:
         model = Comment
         fields = ('body', )
@@ -52,10 +48,8 @@ class CommentShowSerializer(serializers.ModelSerializer):
     """
     Serializer for showing a Comment with its replies.
     """
-
     user = serializers.SlugRelatedField(slug_field='username', read_only=True)
     post = serializers.SlugRelatedField(slug_field='title', read_only=True)
-
     replys = serializers.SerializerMethodField()
 
     class Meta:
@@ -74,7 +68,6 @@ class UserUpdateSerializer(serializers.ModelSerializer):
     """
     Serializer for updating a MyUsers instance.
     """
-
     class Meta:
         model = MyUsers
         fields = ('bio', 'picture',)
@@ -84,7 +77,6 @@ class DirectsSerializer(serializers.ModelSerializer):
     """
     Serializer for the Directs model.
     """
-
     from_user = serializers.SlugRelatedField(slug_field='username', read_only=True)
     to_user = serializers.SlugRelatedField(slug_field='username', read_only=True)
 

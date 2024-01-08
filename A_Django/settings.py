@@ -36,10 +36,18 @@ INSTALLED_APPS = [
     # third-party apps
     'ckeditor',
     'rest_framework',
+    'rest_framework.authtoken',
     'drf_spectacular',
-    'corsheaders'
+    'corsheaders',
+    'dj_rest_auth',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'dj_rest_auth.registration',
 ]
 
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -51,6 +59,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'allauth.account.middleware.AccountMiddleware'
 ]
 CORS_ORIGIN_ALLOW_ALL = True
 
@@ -129,7 +138,10 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
+    # Needed to log_in by username in Django admin, regardless of `allauth`
+    "django.contrib.auth.backends.ModelBackend",
+    # `allauth` specific authentication methods, such as login by e-mail
+    "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
 # Email conf
@@ -152,34 +164,28 @@ AUTH_USER_MODEL = "accounts.MyUsers"
 
 # REST_FRAMEWORK settings
 REST_FRAMEWORK = {
-    # Use JWTAuthentication as the default authentication method for API endpoints
-    'DEFAULT_AUTHENTICATION_CLASSES': ['rest_framework_simplejwt.authentication.JWTAuthentication'],
-
-    # Use drf_spectacular AutoSchema for generating OpenAPI schema automatically
+    'DEFAULT_AUTHENTICATION_CLASSES': ('dj_rest_auth.jwt_auth.JWTCookieAuthentication', ),
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 
 }
 
 # SIMPLE_JWT settings
 SIMPLE_JWT = {
-    # Set the expiration time for access tokens to 7 days
     'ACCESS_TOKEN_LIFETIME': timedelta(days=7),
-
-    # Set the expiration time for refresh tokens to 30 days
     'REFRESH_TOKEN_LIFETIME': timedelta(days=30),
 }
 
 # SPECTACULAR_SETTINGS for OpenAPI documentation
 SPECTACULAR_SETTINGS = {
-    # The title of your API
     'TITLE': 'Your Project API',
-
-    # The description of your API
     'DESCRIPTION': 'Your project description',
-
-    # The version of your API
     'VERSION': '1.0.0',
-
-    # Whether to include the schema in the served documentation or not
     'SERVE_INCLUDE_SCHEMA': False,
 }
+REST_AUTH = {
+    'USE_JWT': True,
+    'JWT_AUTH_HTTPONLY': False,
+    'OLD_PASSWORD_FIELD_ENABLED': True,
+    # 'REGISTER_SERIALIZER': 'accounts.serializers.CustomRegisterSerializer',
+}
+# Following is added to enable registration with email instead of username
