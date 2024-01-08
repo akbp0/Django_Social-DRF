@@ -1,4 +1,4 @@
-from .serializers import UserUpdateSerializer
+from .serializers import UserUpdateSerializer, UserSerializer
 from django.shortcuts import get_object_or_404
 from .models import Poste, Relation, Comment, Vote, Directs
 from django.contrib import messages
@@ -13,6 +13,26 @@ from rest_framework.permissions import IsAuthenticated
 from drf_spectacular.utils import extend_schema
 
 User = get_user_model()
+
+
+class CurrentUserView(APIView):
+    def get(self, request):
+        current_user = request.user
+
+        if not current_user.is_authenticated:
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+        serializer = UserSerializer(current_user)
+
+        return Response(serializer.data)
+
+
+class ListPostsView(APIView):
+    def get(self, request, username):
+        user = User.objects.get(username=username)
+        posts = Poste.objects.filter(user=user)
+        serialized_posts = PosteSerializer(instance=posts, many=True)
+        return Response(data=serialized_posts.data, status=status.HTTP_200_OK)
 
 
 class UserProfileView(APIView):
