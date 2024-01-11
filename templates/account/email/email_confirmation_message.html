@@ -1,0 +1,12 @@
+
+<h3 style="direction: rtl;">
+{% load account %}{% user_display user as user_display %}{% load i18n %}{% autoescape off %}{% blocktrans with site_name=current_site.name site_domain=current_site.domain %}سلام از سامانه ایده‌های نوافتای مرکز تخصصی آپا دانشگاه صنعتی اصفهان
+</h3>
+<h4 style="direction: rtl;">
+    سلام دوست عزیز، فردی با نام کاربری {{ user_display }} با استفاده از این آدرس ایمیل تقاضای عضویت در سامانه ایده‌های نوافتا مرکز تخصصی آپا دانشگاه صنعتی اصفهان را نموده است.
+<br>
+برای تائید درخواست و نهایی شدن ثبت‌نام روی لینک زیر کلیک کنید:   <br/><a href="{{ activate_url }}">{{ activate_url }}</a>
+<br>
+{% endblocktrans %}{% endautoescape %}
+{% blocktrans with site_name=current_site.name site_domain=current_site.domain %} با تشکر از شما برای شرکت در: {{ site_name }}! {{ site_domain }}  {% endblocktrans %}
+</h4

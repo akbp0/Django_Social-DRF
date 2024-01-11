@@ -186,6 +186,8 @@ REST_AUTH = {
     'USE_JWT': True,
     'JWT_AUTH_HTTPONLY': False,
     'OLD_PASSWORD_FIELD_ENABLED': True,
+    'LOGIN_SERIALIZER': 'accounts.serializers.CustomLoginSerializer',
+    # 'REGISTER_SERIALIZER': 'accounts.serializers.CustomRegisterSerializer',
     # 'REGISTER_SERIALIZER': 'accounts.serializers.CustomRegisterSerializer',
 }
 # accounts:manage accounts
@@ -195,3 +197,5 @@ ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_UNIQUE_EMAIL = True
 ACCOUNT_ADAPTER = 'accounts.adapter.CustomAccountAdapter'
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
+
+REDIRECT_URL = '127.0.0.1:8000'
