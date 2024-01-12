@@ -151,8 +151,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Social Website'
 
-EMAIL_HOST_USER = 'social.project012@gmail.com'  # your email
-EMAIL_HOST_PASSWORD = 'nbzdiodcmjyuoinq'  # your password
+EMAIL_HOST_USER = 'sociaverse.org@gmail.com'  # your email
+EMAIL_HOST_PASSWORD = 'jxxd aqjr jgsg ykid'  # your password
 
 # media files
 MEDIA_URL = '/media/'
