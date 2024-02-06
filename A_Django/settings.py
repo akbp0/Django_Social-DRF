@@ -49,6 +49,9 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
+# Setting custom user model
+AUTH_USER_MODEL = "accounts.MyUsers"
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -157,9 +160,6 @@ EMAIL_HOST_PASSWORD = 'jxxd aqjr jgsg ykid'  # your password
 # media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-
-# Setting custom user model
-AUTH_USER_MODEL = "accounts.MyUsers"
 
 
 # REST_FRAMEWORK settings
