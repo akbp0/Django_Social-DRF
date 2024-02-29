@@ -152,13 +152,13 @@ AUTHENTICATION_BACKENDS = [
 # Email conf
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
+
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Social Website'
 
-EMAIL_HOST_USER = 'sociaverse.org@gmail.com'  # your email
-EMAIL_HOST_PASSWORD = 'jxxd aqjr jgsg ykid'  # your password
-
+EMAIL_HOST_USER = env('EMAIL_USER')  # add your email to env
+EMAIL_HOST_PASSWORD = env('EMAIL_USER')  # add your password to env
 # media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
