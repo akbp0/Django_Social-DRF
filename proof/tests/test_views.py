@@ -322,7 +322,7 @@ class TestPostUpdateView(APITestCase):
 
         data = {
             'user': self.user,
-            'title': ImageFile(open('media/sample.jpg', 'rb')),
+            'title': ImageFile(open('sample/sample.jpg', 'rb')),
             'body': '',
         }
 
@@ -738,7 +738,7 @@ class TestEditProfileView(APITestCase):
         # Prepare valid data for profile update
         data = {
             "bio": 'Hello its Me',
-            "picture": ImageFile(open('media/sample.jpg', 'rb')),
+            "picture": ImageFile(open('sample/sample.jpg', 'rb')),
         }
 
         # Send a PUT request to update the profile
@@ -760,7 +760,7 @@ class TestEditProfileView(APITestCase):
 
         # Prepare invalid data for profile update
         data = {
-            "bio": ImageFile(open('media/sample.jpg', 'rb')),
+            "bio": ImageFile(open('sample/sample.jpg', 'rb')),
             "picture": 'adc'
         }
 

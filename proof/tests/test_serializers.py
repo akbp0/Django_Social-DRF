@@ -53,7 +53,7 @@ class PostCreateSerializerTest(APITestCase):
         data = {
             'title': 'TestTitle',
             'body': 'TestBody',
-            'image': ImageFile(open('media/sample.jpg', 'rb')),
+            'image': ImageFile(open('sample/sample.jpg', 'rb')),
         }
 
         # Create an instance of the PosteCreateSerializer with the data
@@ -80,7 +80,7 @@ class PostCreateSerializerTest(APITestCase):
         data = {
             'title': '',
             'body': 3,
-            'image': ImageFile(open('media/sample.jpg', 'rb')),
+            'image': ImageFile(open('sample/sample.jpg', 'rb')),
         }
 
         # Create an instance of the PosteCreateSerializer with the data
@@ -104,7 +104,7 @@ class UserSerializerTest(APITestCase):
             password='testpass123',
             email='email@gmail.com',
             bio="It's Me",
-            picture=ImageFile(open('media/sample.jpg', 'rb')),
+            picture=ImageFile(open('sample/sample.jpg', 'rb')),
         )
 
     def test_user_serializer(self):
@@ -120,7 +120,7 @@ class UserSerializerTest(APITestCase):
             'username': 'testuser',
             'email': 'email@gmail.com',
             'bio': "It's Me",
-            'picture': ImageFile(open('media/sample.jpg', 'rb')),
+            'picture': ImageFile(open('sample/sample.jpg', 'rb')),
         }
 
         # Compare the serialized data with the expected data for username and email
@@ -240,7 +240,7 @@ class UserUpdateSerializerTest(APITestCase):
         # Create a dictionary containing valid data for the serializer
         data = {
             'bio': 'TestBody',
-            'picture': ImageFile(open('media/sample.jpg', 'rb')),
+            'picture': ImageFile(open('sample/sample.jpg', 'rb')),
         }
 
         # Create an instance of the UserUpdateSerializer with the data
