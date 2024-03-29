@@ -158,7 +158,7 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Social Website'
 
 EMAIL_HOST_USER = env('EMAIL_USER')  # add your email to env
-EMAIL_HOST_PASSWORD = env('EMAIL_USER')  # add your password to env
+EMAIL_HOST_PASSWORD = env('EMAIL_PASS')  # add your password to env
 # media files
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
